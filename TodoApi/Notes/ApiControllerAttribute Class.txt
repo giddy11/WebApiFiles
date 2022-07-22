@@ -1,0 +1,24 @@
+Definition
+Namespace: Microsoft.AspNetCore.Mvc
+Assembly:  Microsoft.AspNetCore.Mvc.Core.dll
+Package:   Microsoft.AspNetCore.App.Ref v6.0.6
+
+Indicates that a type and all derived types are used to serve HTTP API responses.
+
+Controllers decorated with this attribute are configured with features and behavior targeted at improving the developer experience for building APIs.
+
+When decorated on an assembly, all controllers in the assembly will be treated as controllers with API behavior.
+
+[System.AttributeUsage(System.AttributeTargets.Assembly | System.AttributeTargets.Class, AllowMultiple=false, Inherited=true)]
+public class ApiControllerAttribute : Microsoft.AspNetCore.Mvc.ControllerAttribute, Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata,
+				      Microsoft.AspNetCore.Mvc.Infrastructure.IApiBehaviorMetadata
+
+Inheritance: Attribute >>>> ControllerAttribute >>>> ApiControllerAttribute
+Attributes: AttributeUsageAttribute
+Implements: IFilterMetadata  IApiBehaviorMetadata
+
+Constructors: ApiControllerAttribute()
+
+
+
+

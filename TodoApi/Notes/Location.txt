@@ -1,0 +1,32 @@
+The Location response header indicates the URL to redirect a page to. It only provides a meaning when served with a 3xx (redirection) or 201 (created) status response.
+
+In cases of redirection, the HTTP method used to make the new request to fetch the page pointed to by Location depends on the original method and the kind of redirection:
+
+303 (See Other) responses always lead to the use of a GET method.
+For example, a GET request generated for the URI reference "http://www.example.org/~tim" might result in a 303 (See Other) response containing the header field:
+
+  Location: /People.html#tim
+which suggests that the user agent redirect to "http://www.example.org/People.html#tim"
+
+307 (Temporary Redirect) and 308 (Permanent Redirect) don't change the method used in the original request.
+
+301 (Moved Permanently) and 302 (Found) don't change the method most of the time, though older user-agents may (so you basically don't know).
+Likewise, a GET request generated for the URI reference "http://www.example.org/index.html#larry" might result in a 301 (Moved Permanently) response containing the header field:
+
+  Location: http://www.example.net/index.html
+which suggests that the user agent redirect to "http://www.example.net/index.html#larry", preserving the original fragment identifier.
+
+All responses with one of these status codes send a Location header.
+
+In cases of resource creation, it indicates the URL to the newly created resource.
+
+Location and Content-Location are different. Location indicates the target of a redirection or the URL of a newly created resource. Content-Location indicates the direct URL to use to access the resource when content negotiation happened, without the need of further content negotiation. Location is a header associated with the response, while Content-Location is associated with the entity returned.
+
+Note: The Content-Location header field (Section 3.1.4.2) differs from Location in that the Content-Location refers to the most specific resource corresponding to the enclosed representation. It is therefore possible for a response to contain both the Location and Content-Location header fields.
+
+
+Syntax:		Location: <url>
+Directives:	<url>
+			A relative (to the request URL) or absolute URL.Example: /index.html
+
+
